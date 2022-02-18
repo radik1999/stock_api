@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  stockapi:
+    build: ./
+    restart: always
+    ports:
+      - "5000:5000"
+
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  beat:
+    restart: always
+    build: ./
+    command: [ "celery", "-A", "celery_service.celery", "beat" ]
+
+  worker:
+    restart: always
+    build: ./
+    command: ["celery", "-A", "celery_service.celery", "worker"]

@@ -1,4 +1,6 @@
 # Byte-compiled / optimized / DLL files
+dump.rdb
+
 __pycache__/
 *.py[cod]
 *$py.class
