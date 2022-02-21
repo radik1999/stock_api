@@ -14,6 +14,9 @@ app.config.update(
 @app.route('/')
 def price():
     pair_name = request.args.get("pair_name")
+    if pair_name:
+        pair_name = pair_name.upper()
+
     stock_name = request.args.get("stock_name")
 
     return jsonify(get_pair_price(pair_name=pair_name, stock_name=stock_name))
